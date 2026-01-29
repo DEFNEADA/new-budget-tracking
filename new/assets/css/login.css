@@ -1,0 +1,63 @@
+body{
+    background:linear-gradient(to right, rgb(234, 233, 240), rgb(95, 74, 214));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(239, 226, 226);
+    border-radius: 5px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.2) ;
+    width: 300px;
+    height: 350px;
+}
+input{
+    border-radius:5px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+}
+input:focus{
+    outline:none;
+    border:2px solid rgb(156, 137, 255) ;
+    transform:scale(1.06);
+}
+button{
+    border-radius:5px;
+    width:100px;
+    height:25px;
+    color:rgb(148 129 246);
+    box-shadow:  4px 8px rgba(0, 0, 0, 0.2) ;
+    
+}
+button:hover{
+    transform:scale(1.06)
+}
+
+#overlay{
+  width:100vw;
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:rgba(0,0,0,0.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index: 999;
+}
+.model-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+}
+.registerbtn,.cancelbtn {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 10px; 
+}

@@ -1,0 +1,211 @@
+/* Genel Ayarlar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: 70px 1fr; /* Header yüksekliğini sabitledik */
+    grid-template-areas:
+        'ust ust'
+        'sol sag';
+    height: 100vh;
+}
+
+/* Üst Menü (Nav) */
+nav {
+    grid-area: ust;
+    background-color: rgb(95, 74, 214);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* İçeriği sağa yasla */
+}
+
+#menuList {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+#profile {
+    color: white;
+    font-weight: bold;
+}
+
+#logoutBtn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#logoutBtn:hover {
+    transform: scale(1.1);
+}
+
+/* Sol Taraf (Girdiler) */
+#input-container {
+    grid-area: sol;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #eee;
+}
+
+#input {
+    padding: 30px;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#input input, #input select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#addBtn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(95, 74, 214);
+    color: white;
+    cursor: pointer;
+}
+
+/* Sağ Taraf (Gösterge ve Liste) */
+#transactionList {
+    padding: 20px;
+}
+
+/* Sağ taraftaki ana kapsayıcıya ID verilmediği için CSS'de 'sag' alanını hedefliyoruz */
+#show{
+    grid-area: sag;
+    background: linear-gradient(to right, rgb(245, 245, 250), rgb(230, 230, 235));
+    overflow-y: auto;
+    padding: 20px;
+}
+
+
+#balanceStats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+#totalBalance, #incomeCard, #expenseCard {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-height: 100px;
+}
+.new-transaction{
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  height: 25px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.new-transaction:hover {
+  background-color: rgb(219, 219, 217);
+}
+
+.new-transaction.income {
+  border-left: 5px solid #2ecc71; /* Yeşil */
+}
+.new-transaction.expense {
+  border-left: 5px solid red;
+}
+
+.delete-btn {
+  display: none;
+  background-color: red;
+  color: black;
+  width: 40px;
+  height: 30px;
+  align-items: center;
+}
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+.edit-btn {
+  display: none;
+  width: 40px;
+  height: 30px;
+  align-items: center;
+}
+.edit-btn:hover {
+  transform: scale(1.2);
+}
+.new-transaction:hover .edit-btn {
+  display: flex;
+}
+.new-transaction:hover .delete-btn {
+  display: flex;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+
+/* Overlay & Modal */
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: none; /* JS ile flex yapılacak */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+/* Media Query (Mobil Uyumluluk) */
+@media (max-width: 768px) {
+    #container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            'ust'
+            'sol'
+            'sag';
+    }
+    
+    #input-container {
+        padding: 20px 0;
+    }
+}
