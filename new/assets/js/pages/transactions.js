@@ -21,17 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (deleteBtn) {
             const transactionid = deleteBtn.closest('.new-transaction').dataset.id;
-            transactiondelete(transactionid);
+            document.getElementById('hiddenTransactionId').value = transactionid;
+            transactiondelete();
         } else if (editBtn) {
             const transactionid = editBtn.closest('.new-transaction').dataset.id;
             transactionEdit(transactionid);
         }
     });
-
+    if (addbtn){
     addbtn.addEventListener('click', (e) => {
         e.preventDefault();
         transactionAdd();
-    });
+    })};
 
     if (updateBtn) {
         updateBtn.addEventListener('click', (e) => {

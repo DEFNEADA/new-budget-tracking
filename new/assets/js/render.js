@@ -40,3 +40,5 @@ export function renderTransactions() {
       incomeCard.querySelector('span').textContent = `${formatCurrency(totalincome)}`;
       expenseCard.querySelector('span').textContent = `${formatCurrency(totalexpense)}`;
 }
+
+

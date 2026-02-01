@@ -66,6 +66,10 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+#input .error{
+    border: 1px solid red;
+
+}
 
 #input input, #input select {
     width: 100%;
@@ -120,7 +124,7 @@ nav {
   display: flex;
   justify-content: space-between;
   width: auto;
-  height: 25px;
+  height: auto;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
