@@ -1,13 +1,19 @@
-
 export async function postRequest(endpoint, data) {
-    const response = await fetch(`https://reqres.in/api${endpoint}`, {
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+
+    const response = await fetch(`http://localhost:3000/${cleanEndpoint}`, {
         method: 'POST',
-        headers: { 
-               'Content-Type': 'application/json',
-               "x-api-key": "reqres_3f0a3d7e55b046a8a9c10a832a90ab95"
-         },
-        body: JSON.stringify(data)
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        console.log('Sunucu Hatası:', errorMessage);
+        return { error: errorMessage };
+    }
 
     return await response.json();
 }

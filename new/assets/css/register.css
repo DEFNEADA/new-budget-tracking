@@ -1,0 +1,78 @@
+body {
+    background: linear-gradient(to right, rgb(234, 233, 240), rgb(95, 74, 214));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(239, 226, 226);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    height: auto;
+    padding: 40px 20px;
+}
+
+/* Başlık stilleri (varsa) */
+h1,
+h2 {
+    color: rgb(95, 74, 214);
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+input {
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box; /* Padding'in genişliği etkilemesini engeller */
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid rgb(156, 137, 255);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+button {
+    border-radius: 5px;
+    width: 100%; /* Butonu tam genişlik yapıyoruz */
+    padding: 12px;
+    color: white; /* Okunabilirlik için beyaz metin */
+    background-color: rgb(95, 74, 214); /* Login temasındaki ana renk */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: scale(1.02);
+    background-color: rgb(80, 60, 190); /* Hover durumunda hafif koyulaşma */
+}
+
+a {
+    color: rgb(95, 74, 214);
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}

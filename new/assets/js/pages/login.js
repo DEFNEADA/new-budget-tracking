@@ -1,31 +1,65 @@
-import { checkAuth, login } from "../auth.js";
+import { checkAuth, login } from '../auth.js';
 
 checkAuth();
 addEventListener('DOMContentLoaded', () => {
-  
     const loginForm = document.getElementById('container');
     const emailInput = document.getElementById('userEmail');
     const passwordInput = document.getElementById('userPassword');
-    
+
+    if (!loginForm) console.error("HATA: 'container' ID'li form bulunamadı!");
+    if (!emailInput) console.error("HATA: 'userEmail' ID'li input bulunamadı!");
+    if (!passwordInput) console.error("HATA: 'userPassword' ID'li input bulunamadı!");
+
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            try {
-                const response = await login(emailInput.value, passwordInput.value);
-                if (response.success) {
 
-                    window.location.href = 'transactions.html';
+            try {
+                const response = await login(emailInput.value.trim().toLowerCase(), passwordInput.value.trim());
+                if (response.success) {
+                    Toastify({
+                        text: 'Giriş başarılı! Yönlendiriliyorsunuz...',
+                        duration: 2000,
+                        gravity: 'bottom',
+                        position: 'right',
+                        style: {
+                            background: 'linear-gradient(to right, #87f38e, #75c9a2)',
+                        },
+                    }).showToast();
+
+                    setTimeout(() => {
+                        window.location.href = 'transactions.html';
+                    }, 2000);
                 } else {
-                    console.log('Giriş yapılamadı: ' + (response.error || 'Hata'));
+                    const errorMsg = response.error || 'Hata';
+
+                    let displayMessage = errorMsg;
+
+                    if (errorMsg.includes('Cannot find user')) {
+                        displayMessage = 'Kullanıcı bulunamadı! E-postanızı kontrol edin.';
+                    } else if (errorMsg.includes('Incorrect password')) {
+                        displayMessage = 'Şifre hatalı!';
+                    } else if (errorMsg.includes('Password is too short')) {
+                        displayMessage = 'Şifre en az 6 karakter olmalıdır!';
+                    } else if (errorMsg.includes('Email is invalid')) {
+                        displayMessage = 'Geçersiz e-posta adresi!';
+                    } else {
+                        displayMessage = errorMsg;
+                    }
+
+                    Toastify({
+                        text: displayMessage,
+                        duration: 3000,
+                        gravity: 'bottom',
+                        position: 'right',
+                        style: {
+                            background: 'linear-gradient(to right, #f19494, #ef3242)',
+                        },
+                    }).showToast();
                 }
             } catch (error) {
                 console.error('Bir hata oluştu:', error);
             }
         });
     }
-    
-
-    
-
-
 });

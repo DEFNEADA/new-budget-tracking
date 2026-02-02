@@ -7,6 +7,7 @@ export function renderTransactions() {
   if (!transactionlist) return;
   transactionlist.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
 
   transactions.forEach(function (transaction) {
     const newtransaction = document.createElement('div');
@@ -29,8 +30,10 @@ export function renderTransactions() {
 `;
    newtransaction.querySelector('.transaction-text').textContent = 
     `${transaction.description} : ${formatCurrency(transaction.amount)}`;
-     transactionlist.appendChild(newtransaction);
+     fragment.appendChild(newtransaction);
   });
+
+   transactionlist.appendChild(fragment);
 
     const totalCard = document.getElementById('totalBalance');
     const incomeCard = document.getElementById('incomeCard');
@@ -40,5 +43,3 @@ export function renderTransactions() {
       incomeCard.querySelector('span').textContent = `${formatCurrency(totalincome)}`;
       expenseCard.querySelector('span').textContent = `${formatCurrency(totalexpense)}`;
 }
-
-

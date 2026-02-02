@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "email": "defne@ornek.com",
+      "password": "$2a$10$NROsOQI4gGjnHOR08uOt3eV7AMmi7Kz5QRTljExuYp0ijwbZLSSj6",
+      "name": "Defne Ada",
+      "id": 1
+    },
+    {
+      "email": "defn111111111e@ornek.com",
+      "password": "$2a$10$TBk3Ru6V/uwy86YY5nluTuVsVwvouhkB7O9alNbFfm2L7nQOOv/B2",
+      "id": 2
+    },
+    {
+      "email": "defne@orn22222ek.com",
+      "password": "$2a$10$uE/UcTUhFQ4a.WNb0nf6LOxeeUp2.NsY4zSS6mijQ1ssWydU1aH32",
+      "id": 3
+    },
+    {
+      "email": "d111111efne@ornek.com",
+      "password": "$2a$10$7WN7d1BZ1LJX/sdShA6aBerTkh8CIKPqOmKkYc4on8UwmN/IqGmui",
+      "id": 4
+    }
+  ]
+}

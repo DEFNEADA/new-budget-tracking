@@ -39,15 +39,22 @@ nav {
 
 #logoutBtn {
     background: transparent;
-    border: none;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 5px;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
 }
 
 #logoutBtn:hover {
-    transform: scale(1.1);
+    background-color: white;
+    color: rgb(95, 74, 214);
+    transform: scale(1.05);
 }
 
 /* Sol Taraf (Girdiler) */
@@ -66,7 +73,12 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-#input .error{
+#input input:focus, #input select:focus{
+    outline:none;
+    border:2px solid rgb(156, 137, 255) ;
+    transform:scale(1.03);
+}
+#input .error {
     border: 1px solid red;
 
 }
@@ -91,12 +103,11 @@ nav {
     cursor: pointer;
 }
 
-/* Sağ Taraf (Gösterge ve Liste) */
+
 #transactionList {
     padding: 20px;
 }
 
-/* Sağ taraftaki ana kapsayıcıya ID verilmediği için CSS'de 'sag' alanını hedefliyoruz */
 #show{
     grid-area: sag;
     background: linear-gradient(to right, rgb(245, 245, 250), rgb(230, 230, 235));
@@ -137,37 +148,45 @@ nav {
 }
 
 .new-transaction.income {
-  border-left: 5px solid #2ecc71; /* Yeşil */
+  border-left: 5px solid #2ecc71;
 }
 .new-transaction.expense {
   border-left: 5px solid red;
 }
 
 .delete-btn {
-  display: none;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
   background-color: red;
   color: black;
   width: 40px;
   height: 30px;
   align-items: center;
+  transition: transform 0.2s;
 }
 .delete-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .edit-btn {
-  display: none;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
   width: 40px;
   height: 30px;
   align-items: center;
+  transition: transform 0.2s;
 }
 .edit-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .new-transaction:hover .edit-btn {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 .new-transaction:hover .delete-btn {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 .buttons {
   display: flex;
@@ -177,7 +196,7 @@ nav {
 }
 
 
-/* Overlay & Modal */
+
 #overlay {
     width: 100vw;
     height: 100vh;
@@ -185,7 +204,7 @@ nav {
     top: 0;
     left: 0;
     background-color: rgba(0,0,0,0.6);
-    display: none; /* JS ile flex yapılacak */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -195,10 +214,60 @@ nav {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
 }
 
-/* Media Query (Mobil Uyumluluk) */
+
+.modal-content input, .modal-content select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+.modal-content input:focus,.modal-content select:focus{
+    outline:none;
+    border:2px solid rgb(156, 137, 255) ;
+    transform:scale(1.03);
+}
+.modal-content .error {
+    border: 1px solid red;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end; /* Sağa yasla */
+    gap: 10px; /* Butonlar arası boşluk */
+    margin-top: 10px;
+}
+
+#updateBtn, #cancelBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+#updateBtn {
+    background-color: rgb(95, 74, 214);
+    color: white;
+}
+
+#cancelBtn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#updateBtn:hover, #cancelBtn:hover {
+    transform: scale(1.05);
+}
+
+
 @media (max-width: 768px) {
     #container {
         grid-template-columns: 1fr;
@@ -211,5 +280,25 @@ nav {
     
     #input-container {
         padding: 20px 0;
+        border-right: none; /* Mobilde sağ çizgiyi kaldır */
+        border-bottom: 1px solid #eee; /* Alta çizgi ekle */
+    }
+
+    #input {
+        width: 90%; 
+    }
+
+    
+    #type {
+        width: 100% !important; 
+    }
+
+    
+    #balanceStats {
+        grid-template-columns: 1fr; 
+    }
+    
+    #menuList {
+        gap: 20px; 
     }
 }

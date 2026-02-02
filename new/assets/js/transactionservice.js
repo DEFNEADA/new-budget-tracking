@@ -1,5 +1,4 @@
 import { renderTransactions} from "./render.js";
-
 export function transactionAdd(){
     let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     
@@ -10,17 +9,16 @@ export function transactionAdd(){
 
     description.classList.remove('error');
     amount.classList.remove('error');
-
     if(description.value.trim()=='' || amount.value.trim() ==''){
         Toastify({
-    text: "lütfen alanları doldurunuz!",
-    duration: 3000, 
-    gravity:"bottom", 
-    position: "right",
-    style: {
-    background: "linear-gradient(to right, #f19494, #ef3242)",
-    }
-    }).showToast();
+            text: "lütfen alanları doldurunuz!",
+            duration: 3000, 
+            gravity:"bottom", 
+            position: "right",
+            style: {
+                background: "linear-gradient(to right, #f19494, #ef3242)",
+            }
+        }).showToast();
 
     if(description.value.trim()==''){
         description.classList.add('error');
@@ -46,13 +44,13 @@ export function transactionAdd(){
     amount.classList.remove('error');
     renderTransactions();
     Toastify({
-    text: "İşlem başarıyla eklendi!",
-    duration: 3000, 
-    gravity:"bottom", 
-    position: "right",
-    style: {
-    background: "linear-gradient(to right, #87f38e, #75c9a2)",
-    }
+        text: "İşlem başarıyla eklendi!",
+        duration: 3000, 
+        gravity:"bottom", 
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, #87f38e, #75c9a2)",
+        }
     }).showToast();
 }
 
@@ -85,10 +83,31 @@ export function transactionUpdate() {
     let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     let index = transactions.findIndex(item => item.id == id);
 
+    let newType = document.getElementById('newType');
+    let editDescription = document.getElementById('editDescription');
+    let editAmount = document.getElementById('editAmount');
+
+    editDescription.classList.remove('error');
+    editAmount.classList.remove('error');
+    
+        
+    if (editDescription.value.trim() == '' || editAmount.value.trim() == '') {
+        if(editDescription.value.trim() == '') editDescription.classList.add('error');
+        if(editAmount.value.trim() == '') editAmount.classList.add('error');
+        Toastify({
+            text: "Lütfen tüm alanları doldurunuz!",
+            duration: 3000,
+            gravity: "bottom",
+            position: "right",
+            style: { background: "linear-gradient(to right, #f19494, #ef3242)" }
+        }).showToast();
+        return;
+    }
+
     if (index !== -1) {
-        transactions[index].type = document.getElementById('newType').value;
-        transactions[index].description = document.getElementById('editDescription').value;
-        transactions[index].amount = Number(document.getElementById('editAmount').value);
+        transactions[index].type = newType.value;
+        transactions[index].description = editDescription.value;
+        transactions[index].amount = Number(editAmount.value);
         
         localStorage.setItem('transactions', JSON.stringify(transactions));
         document.getElementById('overlay').style.display = 'none';
@@ -101,14 +120,14 @@ export function transactionUpdate() {
     } else {
     
         Toastify({
-     text: "Güncellenecek kayıt bulunamadı!",
-     duration: 3000, 
-     gravity:"bottom",
-     position: "right", 
-     style: {
-     background: "linear-gradient(to right, #f19494, #ef3242)",
-    }
-    }).showToast();
+            text: "Güncellenecek kayıt bulunamadı!",
+            duration: 3000, 
+            gravity:"bottom",
+            position: "right", 
+            style: {
+                background: "linear-gradient(to right, #f19494, #ef3242)",
+            }
+        }).showToast();
      }
 }
 
