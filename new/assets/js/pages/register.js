@@ -43,11 +43,35 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!emailRegex.test(email)) {
+            Toastify({
+                text: 'Geçerli bir e-posta adresi giriniz!',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
+            }).showToast();
+            return;
+        }
+
+        if (!passwordRegex.test(password)) {
+            Toastify({
+                text: 'Lütfen güvenliğiniz için en az 6 karakterden oluşan; büyük harf, küçük harf, rakam ve özel karakter içeren bir şifre belirleyin!',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
+            }).showToast();
+            return;
+        }
+
         try {
             const response = await register(email, password);
 
             if (response.success) {
-                // Token varsa kaydet (Otomatik giriş yap)
                 if (response.data && response.data.accessToken) {
                     localStorage.setItem('userToken', response.data.accessToken);
                     if (response.data.user) {

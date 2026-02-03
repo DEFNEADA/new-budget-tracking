@@ -26,19 +26,24 @@ export async function register(email, password) {
 
 export function logout() {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('user');
     window.location.href = 'login.html';
 }
 
 export function checkGuest() {
     const token = localStorage.getItem('userToken');
-    if (!token) {
+    const user = localStorage.getItem('user');
+    if (!token || !user) {
         window.location.href = 'login.html';
+        localStorage.removeItem('user');
+        localStorage.removeItem('userToken');
     }
 }
 
 export function checkAuth() {
     const token = localStorage.getItem('userToken');
-    if (token) {
+    const user = localStorage.getItem('user');
+    if (token && user) {
         window.location.href = 'transactions.html';
     }
 }

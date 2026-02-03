@@ -14,8 +14,34 @@ addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value.trim();
+
+            if (!email || !password) {
+                Toastify({
+                    text: 'Lütfen tüm alanları doldurunuz!',
+                    duration: 3000,
+                    gravity: 'bottom',
+                    position: 'right',
+                    style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
+                }).showToast();
+                return;
+            }
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                Toastify({
+                    text: 'Geçerli bir e-posta adresi giriniz!',
+                    duration: 3000,
+                    gravity: 'bottom',
+                    position: 'right',
+                    style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
+                }).showToast();
+                return;
+            }
+
             try {
-                const response = await login(emailInput.value.trim().toLowerCase(), passwordInput.value.trim());
+                const response = await login(email, password);
                 if (response.success) {
                     Toastify({
                         text: 'Giriş başarılı! Yönlendiriliyorsunuz...',
@@ -39,10 +65,6 @@ addEventListener('DOMContentLoaded', () => {
                         displayMessage = 'Kullanıcı bulunamadı! E-postanızı kontrol edin.';
                     } else if (errorMsg.includes('Incorrect password')) {
                         displayMessage = 'Şifre hatalı!';
-                    } else if (errorMsg.includes('Password is too short')) {
-                        displayMessage = 'Şifre en az 6 karakter olmalıdır!';
-                    } else if (errorMsg.includes('Email is invalid')) {
-                        displayMessage = 'Geçersiz e-posta adresi!';
                     } else {
                         displayMessage = errorMsg;
                     }

@@ -76,3 +76,10 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+#buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}

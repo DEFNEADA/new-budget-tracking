@@ -1,11 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profil</title>
+        <link rel="stylesheet" href="assets/css/register.css" />
+        <link rel="stylesheet" href="assets/css/profile.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+    </head>
+    <body>
+        <nav>
+            <ul id="menuList">
+                <li id="transactions">
+                    <a href="transactions.html" style="text-decoration: none; color: inherit">İşlemler</a>
+                </li>
+                <li>
+                    <button id="logoutBtn">
+                        <i class="fa fa-sign-out"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="container">
+            <h1>Profil Ayarları</h1>
+            <label>Email:</label>
+            <input type="text" id="profileEmail" disabled style="background-color: #e9ecef; cursor: not-allowed" />
+            <br />
+            <label>Yeni Şifre:</label>
+            <input type="password" id="newPassword" placeholder="Yeni şifre " autocomplete="new-password" />
+            <br />
+            <label>Yeni Şifre Tekrar:</label>
+            <input type="password" id="newPassword2" placeholder="Yeni şifre tekrar " autocomplete="new-password" />
+            <br />
+            <button id="updateProfileBtn">Güncelle</button>
+        </div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script type="module" src="assets/js/pages/profile.js"></script>
+    </body>
 </html>
