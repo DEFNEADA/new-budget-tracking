@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!passwordRegex.test(password)) {
             Toastify({
-                text: 'Lütfen güvenliğiniz için en az 6 karakterden oluşan; büyük harf, küçük harf, rakam ve özel karakter içeren bir şifre belirleyin!',
+                text: 'Lütfen güvenliğiniz için en az 8 karakterden oluşan; büyük harf, küçük harf, rakam ve özel karakter içeren bir şifre belirleyin!',
                 duration: 3000,
                 gravity: 'bottom',
                 position: 'right',
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let displayMessage = errorMsg;
 
                 if (errorMsg.includes('Password is too short')) {
-                    displayMessage = 'Şifre en az 6 karakter olmalıdır!';
+                    displayMessage = 'Şifre en az 8 karakter olmalıdır!';
                 } else if (errorMsg.includes('Email is invalid')) {
                     displayMessage = 'Geçersiz e-posta adresi!';
                 } else if (errorMsg.includes('Email already exists')) {

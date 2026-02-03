@@ -36,5 +36,6 @@ export async function patchRequest(endpoint, data) {
         return await response.json();
     } catch (error) {
         console.error('Patch isteği başarısız:', error);
+        return { error: 'Ağ hatası veya sunucuya ulaşılamadı.' };
     }
 }
