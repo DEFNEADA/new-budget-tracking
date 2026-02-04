@@ -1,21 +1,66 @@
 {
-    "users": [
-        {
-            "email": "defne.ada@gmail.com",
-            "password": "$2a$10$CBoiDskUXY9zgKfQ3lQeoOLFsh.37pCmY1OHzO47oa0RQZPsRnEb2",
-            "id": 1
-        },
-        {
-            "email": "defne.aada@gmail.com",
-            "password": "$2a$10$HKbWHqF9lJH35OTakAYEL.zH0AwhR4Pfub0zeYDt.ePT.mfzM80A2",
-            "id": 2
-        },
-        {
-            "email": "defnee@ornek.com",
-            "password": "$2a$10$VNiYJUsgbC9kOK8PN/WpIeKS3MCcTZmLIzX05f2jwsrT1JGj62ts6",
-            "id": 3
-        }
-    ],
-
-    "transactions": []
+  "users": [
+    {
+      "email": "defne.ada@gmail.com",
+      "password": "$2a$10$CBoiDskUXY9zgKfQ3lQeoOLFsh.37pCmY1OHzO47oa0RQZPsRnEb2",
+      "id": 1
+    },
+    {
+      "email": "defne.aada@gmail.com",
+      "password": "$2a$10$HKbWHqF9lJH35OTakAYEL.zH0AwhR4Pfub0zeYDt.ePT.mfzM80A2",
+      "id": 2
+    },
+    {
+      "email": "defnee@ornek.com",
+      "password": "$2a$10$VNiYJUsgbC9kOK8PN/WpIeKS3MCcTZmLIzX05f2jwsrT1JGj62ts6",
+      "id": 3
+    },
+    {
+      "email": "defne@ornek.com",
+      "password": "$2a$10$.pWqbzfTlt6gBkczVJ7DfOgD13ApzPiPKRjLjhYaPEBp3ajxS1UcW",
+      "id": 4
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "income",
+      "description": "education",
+      "amount": 5000,
+      "date": "2024-05-20T09:00:00.000Z"
+    },
+    {
+      "userId": 1,
+      "type": "expense",
+      "description": "food",
+      "amount": 55555,
+      "date": "2026-02-04T13:44:14.964Z",
+      "id": 2
+    },
+    {
+      "userId": 4,
+      "type": "income",
+      "description": "rent",
+      "amount": 5555,
+      "date": "2026-02-04T13:46:36.763Z",
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "type": "income",
+      "description": "rent",
+      "amount": 55555555,
+      "date": "2026-02-04T13:56:49.569Z",
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "type": "income",
+      "description": "rent",
+      "amount": 55555555,
+      "date": "2026-02-04T13:56:53.596Z",
+      "id": 5
+    }
+  ]
 }

@@ -1,7 +1,8 @@
 import { renderTransactions } from './render.js';
-export function transactionAdd() {
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+import { patchRequest, postRequest } from './api.js';
 
+export async function transactionAdd() {
+    const user = JSON.parse(localStorage.getItem('user'));
     let type = document.getElementById('type');
     let description = document.getElementById('descrip');
     let amount = document.getElementById('amount');
@@ -43,14 +44,18 @@ export function transactionAdd() {
     }
 
     let transaction = {
-        id: Date.now(),
+        userId: user.id, // BURASI ÖNEMLİ: İşlemi kullanıcıya bağlıyoruz
         type: type.value.trim(),
         description: description.value.trim(),
         amount: Number(amount.value.trim()),
+        date: new Date().toISOString(),
     };
 
-    transactions.push(transaction);
-    localStorage.setItem('transactions', JSON.stringify(transactions));
+    try {
+        await postRequest('/transactions', transaction);
+    } catch (error) {
+        console.error('Ekleme hatası:', error);
+    }
 
     description.value = '';
     amount.value = '';
@@ -68,9 +73,9 @@ export function transactionAdd() {
     }).showToast();
 }
 
-export function transactionEdit(transactionid) {
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    const transactionToEdit = transactions.find((item) => item.id == Number(transactionid));
+export async function transactionEdit(transactionid) {
+    const response = await fetch(`http://localhost:3000/transactions/${transactionid}`);
+    const transactionToEdit = await response.json();
 
     if (transactionToEdit) {
         const typeInput = document.getElementById('newType');
@@ -87,12 +92,9 @@ export function transactionEdit(transactionid) {
     }
 }
 
-export function transactionUpdate() {
+export async function transactionUpdate() {
     let hiddenId = document.getElementById('hiddenTransactionId');
     let id = Number(hiddenId.value);
-
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    let index = transactions.findIndex((item) => item.id == id);
 
     let newType = document.getElementById('newType');
     let editDescription = document.getElementById('editDescription');
@@ -127,21 +129,24 @@ export function transactionUpdate() {
         return;
     }
 
-    if (index !== -1) {
-        transactions[index].type = newType.value;
-        transactions[index].description = editDescription.value;
-        transactions[index].amount = Number(editAmount.value);
+    const updatedTransaction = {
+        type: newType.value,
+        description: editDescription.value,
+        amount: Number(editAmount.value),
+    };
 
-        localStorage.setItem('transactions', JSON.stringify(transactions));
+    try {
+        await patchRequest(`transactions/${id}`, updatedTransaction);
+
         document.getElementById('overlay').style.display = 'none';
         document.getElementById('newType').value = '';
         document.getElementById('editDescription').value = '';
         document.getElementById('editAmount').value = '';
         hiddenId.value = '';
         renderTransactions();
-    } else {
+    } catch (error) {
         Toastify({
-            text: 'Güncellenecek kayıt bulunamadı!',
+            text: 'Güncelleme hatası!',
             duration: 3000,
             gravity: 'bottom',
             position: 'right',
@@ -152,13 +157,8 @@ export function transactionUpdate() {
     }
 }
 
-export function transactiondelete() {
-    let hiddenId = document.getElementById('hiddenTransactionId');
-    let id = Number(hiddenId.value);
+export async function transactiondelete(id) {
+    await fetch(`http://localhost:3000/transactions/${id}`, { method: 'DELETE' });
 
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    transactions = transactions.filter((item) => item.id != id);
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-    hiddenId.value = '';
     renderTransactions();
 }
