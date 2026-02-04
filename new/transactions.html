@@ -31,7 +31,7 @@
                 <form id="input">
                     <h2>Yeni İşlem Ekle</h2>
                     <br />
-                    Tür:
+                    <label for="type">Tür:</label>
                     <br />
                     <select id="type" style="width: 170px">
                         <option value="income">Gelir</option>
@@ -39,15 +39,21 @@
                     </select>
                     <br />
                     <br />
-                    <label for="descrip">Açıklama:</label>
+                    <label for="description">Açıklama:</label>
                     <br />
-                    <input
-                        name="descrip"
-                        id="descrip"
-                        type="text"
-                        oninput="this.value = this.value.replace(/[0-9]/g, '')"
-                        required
-                    />
+                    <select name="descrip" id="descrip">
+                        <option value="" disabled selected hidden>Açıklama Seçiniz</option>
+                        <option value="food">Yemek</option>
+                        <option value="rent">Kira</option>
+                        <option value="shopping">Alışveriş</option>
+                        <option value="salary">Maaş</option>
+                        <option value="bills">Fatura</option>
+                        <option value="education">Eğitim</option>
+                        <option value="entertainment">Eğlence</option>
+                        <option value="transport">Ulaşım</option>
+                        <option value="other">Diğer</option>
+                    </select>
+                    <br />
                     <br />
                     <label for="amount">Tutar:</label>
                     <br />
@@ -86,15 +92,21 @@
                     </select>
                     <br />
                     <br />
-                    <label for="editDescription">Açıklama:</label>
+                    <label for="description">Açıklama:</label>
                     <br />
-                    <input
-                        name="description"
-                        id="editDescription"
-                        type="text"
-                        oninput="this.value = this.value.replace(/[0-9]/g, '')"
-                        required
-                    />
+                    <select name="description" id="editDescription">
+                        <option value="" disabled selected hidden>Açıklama Seçiniz</option>
+                        <option value="food">Yemek</option>
+                        <option value="rent">Kira</option>
+                        <option value="shopping">Alışveriş</option>
+                        <option value="salary">Maaş</option>
+                        <option value="bills">Fatura</option>
+                        <option value="education">Eğitim</option>
+                        <option value="entertainment">Eğlence</option>
+                        <option value="transport">Ulaşım</option>
+                        <option value="other">Diğer</option>
+                    </select>
+                    <br />
                     <br />
                     <label for="editAmount">Tutar:</label>
                     <br />
