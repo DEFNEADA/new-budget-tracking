@@ -1,4 +1,5 @@
 import { checkAuth, login } from '../auth.js';
+import { addPasswordToggle } from '../toggle.js';
 
 checkAuth();
 addEventListener('DOMContentLoaded', () => {
@@ -9,6 +10,8 @@ addEventListener('DOMContentLoaded', () => {
     if (!loginForm) console.error("HATA: 'container' ID'li form bulunamadı!");
     if (!emailInput) console.error("HATA: 'userEmail' ID'li input bulunamadı!");
     if (!passwordInput) console.error("HATA: 'userPassword' ID'li input bulunamadı!");
+
+    addPasswordToggle('userPassword');
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -63,10 +66,8 @@ addEventListener('DOMContentLoaded', () => {
 
                     if (errorMsg.includes('Cannot find user')) {
                         displayMessage = 'Kullanıcı bulunamadı! E-postanızı kontrol edin.';
-                    } else if (errorMsg.includes('Incorrect password')) {
-                        displayMessage = 'Şifre hatalı!';
                     } else {
-                        displayMessage = errorMsg;
+                        displayMessage = 'Şifre hatalı!';
                     }
 
                     Toastify({

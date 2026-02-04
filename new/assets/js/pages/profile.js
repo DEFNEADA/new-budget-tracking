@@ -1,5 +1,6 @@
 import { checkGuest, logout } from '../auth.js';
 import { patchRequest, postRequest } from '../api.js';
+import { addPasswordToggle } from '../toggle.js';
 
 checkGuest();
 addEventListener('DOMContentLoaded', () => {
@@ -13,6 +14,9 @@ addEventListener('DOMContentLoaded', () => {
     if (userData && userData.email) {
         emailInput.value = userData.email;
     }
+
+    addPasswordToggle('newPassword');
+    addPasswordToggle('newPassword2');
 
     updateBtn.addEventListener('click', async () => {
         const user = JSON.parse(localStorage.getItem('user'));

@@ -48,7 +48,7 @@ nav {
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px; 
+    gap: 8px;
 }
 
 #logoutBtn:hover {
@@ -73,17 +73,18 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-#input input:focus, #input select:focus{
-    outline:none;
-    border:2px solid rgb(156, 137, 255) ;
-    transform:scale(1.03);
+#input input:focus,
+#input select:focus {
+    outline: none;
+    border: 2px solid rgb(156, 137, 255);
+    transform: scale(1.03);
 }
 #input .error {
     border: 1px solid red;
-
 }
 
-#input input, #input select {
+#input input,
+#input select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -103,18 +104,16 @@ nav {
     cursor: pointer;
 }
 
-
 #transactionList {
     padding: 20px;
 }
 
-#show{
+#show {
     grid-area: sag;
     background: linear-gradient(to right, rgb(245, 245, 250), rgb(230, 230, 235));
     overflow-y: auto;
     padding: 20px;
 }
-
 
 #balanceStats {
     display: grid;
@@ -123,7 +122,9 @@ nav {
     margin-bottom: 30px;
 }
 
-#totalBalance, #incomeCard, #expenseCard {
+#totalBalance,
+#incomeCard,
+#expenseCard {
     background-color: white;
     padding: 20px;
     text-align: center;
@@ -131,71 +132,69 @@ nav {
     border-radius: 8px;
     min-height: 100px;
 }
-.new-transaction{
-  display: flex;
-  justify-content: space-between;
-  width: auto;
-  height: auto;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.new-transaction {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .new-transaction:hover {
-  background-color: rgb(219, 219, 217);
+    background-color: rgb(219, 219, 217);
 }
 
 .new-transaction.income {
-  border-left: 5px solid #2ecc71;
+    border-left: 5px solid #2ecc71;
 }
 .new-transaction.expense {
-  border-left: 5px solid red;
+    border-left: 5px solid red;
 }
 
 .delete-btn {
-  display: flex;
-  opacity: 0;
-  pointer-events: none;
-  background-color: red;
-  color: black;
-  width: 40px;
-  height: 30px;
-  align-items: center;
-  transition: transform 0.2s;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    background-color: red;
+    color: black;
+    width: 40px;
+    height: 30px;
+    align-items: center;
+    transition: transform 0.2s;
 }
 .delete-btn:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 .edit-btn {
-  display: flex;
-  opacity: 0;
-  pointer-events: none;
-  width: 40px;
-  height: 30px;
-  align-items: center;
-  transition: transform 0.2s;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    width: 40px;
+    height: 30px;
+    align-items: center;
+    transition: transform 0.2s;
 }
 .edit-btn:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 .new-transaction:hover .edit-btn {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 .new-transaction:hover .delete-btn {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 .buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
 }
-
-
 
 #overlay {
     width: 100vw;
@@ -203,8 +202,8 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.6);
-    display: none; 
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -218,20 +217,21 @@ nav {
     max-width: 400px;
 }
 
-
-.modal-content input, .modal-content select {
+.modal-content input,
+.modal-content select {
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
     background-color: #f9f9f9;
 }
-.modal-content input:focus,.modal-content select:focus{
-    outline:none;
-    border:2px solid rgb(156, 137, 255) ;
-    transform:scale(1.03);
+.modal-content input:focus,
+.modal-content select:focus {
+    outline: none;
+    border: 2px solid rgb(156, 137, 255);
+    transform: scale(1.03);
 }
 .modal-content .error {
     border: 1px solid red;
@@ -244,7 +244,8 @@ nav {
     margin-top: 10px;
 }
 
-#updateBtn, #cancelBtn {
+#updateBtn,
+#cancelBtn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -263,10 +264,10 @@ nav {
     color: #333;
 }
 
-#updateBtn:hover, #cancelBtn:hover {
+#updateBtn:hover,
+#cancelBtn:hover {
     transform: scale(1.05);
 }
-
 
 @media (max-width: 768px) {
     #container {
@@ -276,8 +277,9 @@ nav {
             'ust'
             'sol'
             'sag';
+        height: auto; /* Mobilde sayfanın içeriğe göre uzamasına izin ver */
     }
-    
+
     #input-container {
         padding: 20px 0;
         border-right: none; /* Mobilde sağ çizgiyi kaldır */
@@ -285,20 +287,22 @@ nav {
     }
 
     #input {
-        width: 90%; 
+        width: 90%;
     }
 
-    
     #type {
-        width: 100% !important; 
+        width: 100% !important;
     }
 
-    
     #balanceStats {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
-    
+
     #menuList {
-        gap: 20px; 
+        gap: 20px;
+    }
+
+    #show {
+        overflow-y: visible; /* Mobilde iç scroll yerine sayfa scroll'u kullan */
     }
 }

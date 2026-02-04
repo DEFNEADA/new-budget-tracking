@@ -43,7 +43,7 @@ nav {
 }
 
 #container {
-    margin-top: 50px;
+    margin: auto;
 }
 #buttons {
     display: flex;

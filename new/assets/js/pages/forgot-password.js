@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const users = await response.json();
 
             if (users.length > 0) {
+                localStorage.setItem('resetUserId', users[0].id);
+
                 Toastify({
                     text: 'Kullanıcı doğrulandı, yönlendiriliyorsunuz...',
                     duration: 2000,
@@ -34,8 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).showToast();
 
                 setTimeout(() => {
-                    // ID'yi URL'in sonuna ?id=... şeklinde ekliyoruz
-                    window.location.href = `reset-password.html?id=${users[0].id}`;
+                    window.location.href = 'reset-password.html';
                 }, 2000);
             } else {
                 Toastify({

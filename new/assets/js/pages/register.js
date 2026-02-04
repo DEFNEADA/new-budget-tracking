@@ -1,10 +1,14 @@
 import { register, checkAuth } from '../auth.js';
+import { addPasswordToggle } from '../toggle.js';
 
 checkAuth();
 
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('container');
     if (!registerForm) return console.error("HATA: 'container' ID'li form bulunamadı!");
+
+    addPasswordToggle('userPassword');
+    addPasswordToggle('userPassword2');
 
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();

@@ -21,6 +21,7 @@ export async function postRequest(endpoint, data) {
 export async function patchRequest(endpoint, data) {
     const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
     try {
+        console.log(cleanEndpoint);
         const response = await fetch(`http://localhost:3000/${cleanEndpoint}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },

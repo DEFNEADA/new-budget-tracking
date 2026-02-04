@@ -2,8 +2,18 @@
   "users": [
     {
       "email": "defne.ada@gmail.com",
-      "password": "$2a$10$xtlu7eWb7Efv7ZW3X3PlEOx7aE78sSnXKW0w2L5Ok3Ee11lT.Ixca",
+      "password": "$2a$10$CBoiDskUXY9zgKfQ3lQeoOLFsh.37pCmY1OHzO47oa0RQZPsRnEb2",
       "id": 1
+    },
+    {
+      "email": "defne.aada@gmail.com",
+      "password": "$2a$10$HKbWHqF9lJH35OTakAYEL.zH0AwhR4Pfub0zeYDt.ePT.mfzM80A2",
+      "id": 2
+    },
+    {
+      "email": "defnee@ornek.com",
+      "password": "$2a$10$VNiYJUsgbC9kOK8PN/WpIeKS3MCcTZmLIzX05f2jwsrT1JGj62ts6",
+      "id": 3
     }
   ]
 }

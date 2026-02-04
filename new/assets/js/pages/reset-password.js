@@ -1,14 +1,15 @@
-import { patchRequest, postRequest } from '../api.js';
+import { patchRequest } from '../api.js';
+import { addPasswordToggle } from '../toggle.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Adres çubuğundaki ?id=... kısmını okuyoruz
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('id');
-
+    const userId = localStorage.getItem('resetUserId');
     if (!userId) {
         window.location.href = 'login.html';
         return;
     }
+
+    addPasswordToggle('newPass');
+    addPasswordToggle('newPass2');
 
     const form = document.getElementById('container');
 
@@ -41,55 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        try {
-            // Kullanıcının mevcut şifresini kontrol etmek için veriyi çekiyoruz
-            const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
-            if (userResponse.ok) {
-                const user = await userResponse.json();
+        const updateData = { password: pass1 };
+        const result = await patchRequest(`/users/${userId}`, updateData);
+        localStorage.removeItem('resetUserId');
+        if (result && result.id) {
+            Toastify({
+                text: 'Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz.',
+                duration: 2000,
+                gravity: 'bottom',
+                position: 'right',
+                style: { background: 'linear-gradient(to right, #87f38e, #75c9a2)' },
+            }).showToast();
 
-                // Şifre kontrolü: Hash'li şifreler için /login endpoint'ini kullanıyoruz
-                const checkLogin = await postRequest('/login', { email: user.email, password: pass1 });
-
-                if (checkLogin.accessToken) {
-                    /*Eğer sistem "Giriş Başarılı" derse (accessToken verirse), 
-                                                                                demek ki yazdığı yeni şifre aslında eski şifresiyle aynı!*/
-                    Toastify({
-                        text: 'Yeni şifre eski şifrenizle aynı olamaz!',
-                        duration: 3000,
-                        gravity: 'bottom',
-                        position: 'right',
-                        style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
-                    }).showToast();
-                    return;
-                }
-            }
-
-            const updateData = { password: pass1 };
-            const result = await patchRequest(`/users/${userId}`, updateData);
-
-            if (result && result.id) {
-                Toastify({
-                    text: 'Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz.',
-                    duration: 3000,
-                    gravity: 'bottom',
-                    position: 'right',
-                    style: { background: 'linear-gradient(to right, #87f38e, #75c9a2)' },
-                }).showToast();
-
-                setTimeout(() => {
-                    window.location.href = 'login.html';
-                }, 3000);
-            } else {
-                Toastify({
-                    text: 'Güncelleme sırasında bir hata oluştu.',
-                    duration: 3000,
-                    gravity: 'bottom',
-                    position: 'right',
-                    style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
-                }).showToast();
-            }
-        } catch (error) {
-            console.error(error);
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        } else {
+            Toastify({
+                text: 'Güncelleme sırasında bir hata oluştu.',
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                style: { background: 'linear-gradient(to right, #f19494, #ef3242)' },
+            }).showToast();
         }
     });
 });
