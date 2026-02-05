@@ -4,7 +4,7 @@ import { patchRequest, postRequest } from './api.js';
 export async function transactionAdd() {
     const user = JSON.parse(localStorage.getItem('user'));
     let type = document.getElementById('type');
-    let description = document.getElementById('descrip');
+    let description = document.getElementById('description');
     let amount = document.getElementById('amount');
 
     description.classList.remove('error');

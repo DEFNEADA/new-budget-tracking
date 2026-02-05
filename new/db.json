@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "defne.ada@gmail.com",
-      "password": "$2a$10$CBoiDskUXY9zgKfQ3lQeoOLFsh.37pCmY1OHzO47oa0RQZPsRnEb2",
+      "password": "$2a$10$xivOl7nRaYV2eaGWZeCZWOU0D8r.BzuUApjRWsYZqsgtmYpdlRdn6",
       "id": 1
     },
     {
@@ -50,6 +50,38 @@
       "amount": 55555555,
       "date": "2026-02-04T13:56:53.596Z",
       "id": 5
+    },
+    {
+      "userId": 1,
+      "type": "income",
+      "description": "rent",
+      "amount": 5555,
+      "date": "2026-02-05T08:21:15.764Z",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "type": "income",
+      "description": "salary",
+      "amount": 11111,
+      "date": "2026-02-05T08:21:21.049Z",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "type": "income",
+      "description": "salary",
+      "amount": 55553,
+      "date": "2026-02-05T08:22:20.531Z",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "type": "expense",
+      "description": "rent",
+      "amount": 5555,
+      "date": "2026-02-05T08:24:40.510Z",
+      "id": 9
     }
   ]
 }
