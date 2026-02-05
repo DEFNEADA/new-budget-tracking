@@ -1,19 +1,17 @@
-import { checkGuest, logout } from "../auth.js";
-import { transactionAdd, transactionEdit, transactiondelete, transactionUpdate } from "../transactionservice.js";
-import { renderTransactions} from "../render.js";
+import { checkGuest, logout } from '../auth.js';
+import { transactionAdd, transactionEdit, transactiondelete, transactionUpdate } from '../transactionservice.js';
+import { renderTransactions } from '../render.js';
 
 checkGuest();
 
 document.addEventListener('DOMContentLoaded', () => {
-    let logoutbtn=document.getElementById('logoutBtn');
-    let addbtn=document.getElementById('addBtn');
-    let updateBtn=document.getElementById('updateBtn');
-    let cancelBtn=document.getElementById('cancelBtn');
-    let transactionlist=document.getElementById('transactionList');
-    
-    renderTransactions();
-    
+    let logoutbtn = document.getElementById('logoutBtn');
+    let addbtn = document.getElementById('addBtn');
+    let updateBtn = document.getElementById('updateBtn');
+    let cancelBtn = document.getElementById('cancelBtn');
+    let transactionlist = document.getElementById('transactionList');
 
+    renderTransactions();
 
     transactionlist.addEventListener('click', (e) => {
         const deleteBtn = e.target.closest('.delete-btn');
@@ -21,18 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (deleteBtn) {
             const transactionid = deleteBtn.closest('.new-transaction').dataset.id;
-            document.getElementById('hiddenTransactionId').value = transactionid;
-            transactiondelete();
+            transactiondelete(transactionid);
         } else if (editBtn) {
             const transactionid = editBtn.closest('.new-transaction').dataset.id;
             transactionEdit(transactionid);
         }
     });
-    if (addbtn){
-    addbtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        transactionAdd();
-    })};
+    if (addbtn) {
+        addbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            transactionAdd();
+        });
+    }
 
     if (updateBtn) {
         updateBtn.addEventListener('click', (e) => {
@@ -48,15 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     logoutbtn.addEventListener('click', logout);
-    
-
-
-
-
-
-
-
-
-
-
 });

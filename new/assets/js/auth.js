@@ -27,6 +27,7 @@ export async function register(email, password) {
 export function logout() {
     localStorage.removeItem('userToken');
     localStorage.removeItem('user');
+    localStorage.removeItem('transaction');
     window.location.href = 'login.html';
 }
 

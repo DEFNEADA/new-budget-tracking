@@ -1,6 +1,7 @@
 import { calculations, formatCurrency } from './calculation.js';
-export function renderTransactions() {
+export async function renderTransactions() {
     let transactionlist = document.getElementById('transactionList');
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const translations = {
         food: 'Yemek',
@@ -15,8 +16,14 @@ export function renderTransactions() {
         other: 'Diğer',
     };
 
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    const { totalbalance, totalincome, totalexpense } = calculations();
+    if (!user) return;
+
+    // API'den verileri çek (userId filtresi ile)
+    const response = await fetch(`http://localhost:3000/transactions?userId=${user.id}`);
+    const transactions = await response.json();
+
+    const { totalbalance, totalincome, totalexpense } = calculations(transactions);
+
     if (!transactionlist) return;
     transactionlist.innerHTML = '';
 
