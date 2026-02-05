@@ -86,7 +86,7 @@ export async function transactionEdit(transactionid) {
         if (typeInput) typeInput.value = transactionToEdit.type;
         if (descInput) descInput.value = transactionToEdit.description;
         if (amountInput) amountInput.value = transactionToEdit.amount;
-        if (hiddenId) hiddenId.value = transactionToEdit.id;
+        if (hiddenId) hiddenId.value = transactionid;
 
         document.getElementById('overlay').style.display = 'flex';
     }

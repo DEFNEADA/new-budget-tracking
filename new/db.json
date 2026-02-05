@@ -19,25 +19,14 @@
       "email": "defne@ornek.com",
       "password": "$2a$10$.pWqbzfTlt6gBkczVJ7DfOgD13ApzPiPKRjLjhYaPEBp3ajxS1UcW",
       "id": 4
+    },
+    {
+      "email": "defne.adaaaa@gmail.com",
+      "password": "$2a$10$mU2buxFkr8BPBMr1JP2Me.brkBFXfGZJFlfdS2kqpvc8Og/OJFLKC",
+      "id": 5
     }
   ],
   "transactions": [
-    {
-      "id": 1,
-      "userId": 1,
-      "type": "income",
-      "description": "education",
-      "amount": 5000,
-      "date": "2024-05-20T09:00:00.000Z"
-    },
-    {
-      "userId": 1,
-      "type": "expense",
-      "description": "food",
-      "amount": 55555,
-      "date": "2026-02-04T13:44:14.964Z",
-      "id": 2
-    },
     {
       "userId": 4,
       "type": "income",

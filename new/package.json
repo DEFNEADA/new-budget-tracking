@@ -5,6 +5,6 @@
         "json-server-auth": "^2.1.0"
     },
     "scripts": {
-        "start": "json-server --watch data/db.json"
+        "start": "json-server db.json -m ./node_modules/json-server-auth --watch"
     }
 }
