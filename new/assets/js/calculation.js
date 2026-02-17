@@ -6,9 +6,7 @@ export function formatCurrency(amount) {
     }).format(amount);
 }
 
-export function calculations() {
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
+export function calculations(transactions = []) {
     const totalincome = transactions
         .filter((item) => item.type == 'income')
         .reduce((sum, item) => sum + Number(item.amount), 0);
