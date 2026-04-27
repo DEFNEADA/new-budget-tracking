@@ -5,6 +5,7 @@
         "json-server-auth": "^2.1.0"
     },
     "scripts": {
+        "setup": "node -e \"require('fs').copyFileSync('db.example.json', 'db.json')\"",
         "start": "json-server db.json -m ./node_modules/json-server-auth -s ./ --watch"
     }
 }
