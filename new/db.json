@@ -24,6 +24,11 @@
       "email": "defne.adaaaa@gmail.com",
       "password": "$2a$10$mU2buxFkr8BPBMr1JP2Me.brkBFXfGZJFlfdS2kqpvc8Og/OJFLKC",
       "id": 5
+    },
+    {
+      "email": "defnde@ornek.com",
+      "password": "$2a$10$XozXBdu4AtyZb7Fu6cFJE./MscLZ1iB4ncEP1FlB3L1EAvxJqPhNi",
+      "id": 6
     }
   ],
   "transactions": [
@@ -54,22 +59,6 @@
     {
       "userId": 1,
       "type": "income",
-      "description": "rent",
-      "amount": 5555,
-      "date": "2026-02-05T08:21:15.764Z",
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "type": "income",
-      "description": "salary",
-      "amount": 11111,
-      "date": "2026-02-05T08:21:21.049Z",
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "type": "income",
       "description": "salary",
       "amount": 55553,
       "date": "2026-02-05T08:22:20.531Z",
@@ -82,6 +71,22 @@
       "amount": 5555,
       "date": "2026-02-05T08:24:40.510Z",
       "id": 9
+    },
+    {
+      "userId": 1,
+      "type": "expense",
+      "description": "shopping",
+      "amount": 55555,
+      "date": "2026-02-06T09:11:09.376Z",
+      "id": 10
+    },
+    {
+      "userId": 6,
+      "type": "income",
+      "description": "bills",
+      "amount": 2222,
+      "date": "2026-04-27T06:55:55.836Z",
+      "id": 12
     }
   ]
 }
