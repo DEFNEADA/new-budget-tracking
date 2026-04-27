@@ -18,7 +18,6 @@ export async function renderTransactions() {
 
     if (!user) return;
 
-    // API'den verileri çek (userId filtresi ile)
     const response = await fetch(`http://localhost:3000/transactions?userId=${user.id}`);
     const transactions = await response.json();
 
